@@ -1,4 +1,5 @@
 package personnage;
+import java.util.Random;
 
 public class Personnage {
 	
@@ -50,6 +51,7 @@ public class Personnage {
 	public void setIni(int ini) {
 		this.ini = ini;
 	}
+	
 
 	// -------------------------------------------------------------------------
     public Personnage() {
@@ -84,7 +86,11 @@ public class Personnage {
     private int attaqueCalcul() {
         // TODO : Retourner la valeur de l'attaque du personnage.
         // Cette valeur est trouvée aléatoirement et doit se situer entre ZÉRO et valeurMaxAttaque.
-        return 0;
+    	Random rand = new Random();
+    	int atk = rand.nextInt(attaqueMax - 1) +1;
+    	
+    	
+        return atk;
     }
 
     // -------------------------------------------------------------------------
@@ -92,6 +98,8 @@ public class Personnage {
         // TODO : Récupérer la valeur d'attaque pour ce tour, calculer les dégats,
         //modifier les points de vie du personnage cible, afficher les détails
         // sur l'attaque, tel que montré dans l'énoncé.
+    	
+    	System.out.println(attaqueCalcul());
     }
 
     // -------------------------------------------------------------------------

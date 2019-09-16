@@ -6,13 +6,10 @@ public class CompteurDeTour {
     
 	// -------------------------------------------------------------------------
     public CompteurDeTour() {
-        // TODO : Constructeur SANS paramètres qui initialise un compteur de tour (attribut) à 1
     	nmbrTour = 1;
     }
 
-    // -------------------------------------------------------------------------
-    // TODO : Le getter
-    // TODO : Le setter
+    
     public int getNmbrTour() {
 		return nmbrTour;
 	}

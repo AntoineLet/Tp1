@@ -1,4 +1,5 @@
 package tp1;
+import java.util.Random;
 import personnage.Personnage;
 import combat.CompteurDeTour;
 import combat.AffichageEcran;
@@ -22,23 +23,23 @@ public class JeuGladiateurs {
         System.out.println(">>>>> Que le combat commence ! <<<<<");
         System.out.println("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>");
 
-        while(nmbreTour.getNmbrTour() <= 100)
-        {
-        
-        	
-        	nmbreTour.afficheTour();
-        	nmbreTour.augmenteTour();
-        	if(init == personnage1.getIni()) {
-        		System.out.println("Nique");
-        	}
-        	if(init == personnage2.getIni()) {
-        		System.out.println("Nique2");
+       while ((personnage1.getPv() > 0 || personnage2.getPv() > 0) && nmbreTour.getNmbrTour() <= 100)
+	   {
+    	   		init++;
+	        	nmbreTour.afficheTour();
+	        	if(init == personnage1.getIni()) {
+	        		
+	        		personnage1.frapperPersonnage(personnage2);
+	        		System.out.println("Nique");
+	        	}
+	        	if(init == personnage2.getIni()) {
+	        		System.out.println("Nique2");
+	        	}
+	       	 personnage1.afficherInfosPersonnage();
+	       	 personnage2.afficherInfosPersonnage();
+	       	 nmbreTour.augmenteTour();
 
-        	}
-        		
-        	init++;
-        	
-        }
+	       }
 	}
 
 }
