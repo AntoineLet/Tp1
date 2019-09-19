@@ -3,9 +3,9 @@ import java.util.Random;
 
 public class Personnage {
 	
-	String nomPers;
-	int attaqueMax, defense, pv, ini;
-	boolean statut;	
+	private String nomPers;
+	private int attaqueMax, defense, pv, ini;
+	private boolean statut;	
 	// -------------------------------------------------------------------------
     public Personnage(String nom, int attaqueMax, int defense, int pvs, int ini) {
         // TODO : Constructeur AVEC paramètres
@@ -95,11 +95,21 @@ public class Personnage {
 
     // -------------------------------------------------------------------------
     public void frapperPersonnage(Personnage personnageCible) {
-        // TODO : Récupérer la valeur d'attaque pour ce tour, calculer les dégats,
-        //modifier les points de vie du personnage cible, afficher les détails
-        // sur l'attaque, tel que montré dans l'énoncé.
+
+    	int valAtk = attaqueCalcul();
+    	int Def = personnageCible.getDefense();
+    	System.out.println(this.nomPers + " attaque avec une puissance de: " + valAtk);
+    	System.out.println(personnageCible.getNomPers() + " � une d�fense de: " + Def);
+    	int dmgSubis = valAtk - Def;
+    	System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
     	
-    	System.out.println(attaqueCalcul());
+    	if(dmgSubis > 0)
+    	{
+    		//System.out.println(personnageCible.getPv());
+    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
+    		//System.out.println(personnageCible.getPv());
+    	}
+    	
     }
 
     // -------------------------------------------------------------------------

@@ -3,12 +3,14 @@ import java.util.Random;
 import personnage.Personnage;
 import combat.CompteurDeTour;
 import combat.AffichageEcran;
+import java.util.Scanner;
 
 public class JeuGladiateurs {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		Scanner scan = new Scanner(System.in);
 		int init = 0;
 		CompteurDeTour nmbreTour = new CompteurDeTour();
 	
@@ -21,25 +23,31 @@ public class JeuGladiateurs {
         
         System.out.println("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>");
         System.out.println(">>>>> Que le combat commence ! <<<<<");
-        System.out.println("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>");
+        System.out.println("<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>\n\n\n");
 
-       while ((personnage1.getPv() > 0 || personnage2.getPv() > 0) && nmbreTour.getNmbrTour() <= 100)
+       while (nmbreTour.getNmbrTour() <= 100)
 	   {
-    	   		init++;
-	        	nmbreTour.afficheTour();
-	        	if(init == personnage1.getIni()) {
-	        		
-	        		personnage1.frapperPersonnage(personnage2);
-	        		System.out.println("Nique");
+    	   nmbreTour.afficheTour();
+		//personnage1.frapperPersonnage(personnage2); (personnage1.getPv() > 0 || personnage2.getPv() > 0) && 
+    	   while(init <= 100 )
+    	   {
+    		   init++;
+    		 
+    		   if(init == personnage1.getIni()) 
+    		   {
+    			   personnage1.frapperPersonnage(personnage2);
 	        	}
+    		   
 	        	if(init == personnage2.getIni()) {
-	        		System.out.println("Nique2");
+	        		personnage2.frapperPersonnage(personnage1);
 	        	}
-	       	 personnage1.afficherInfosPersonnage();
-	       	 personnage2.afficherInfosPersonnage();
-	       	 nmbreTour.augmenteTour();
-
-	       }
+    	   }
+    	   
+    	   personnage1.afficherInfosPersonnage();
+	       personnage2.afficherInfosPersonnage();
+    	   System.out.println("Appuyez sur Entrer pour passer au tour suivant.");
+    	   scan.nextLine();
+	   }
 	}
 
 }
