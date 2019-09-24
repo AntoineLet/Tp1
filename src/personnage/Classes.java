@@ -5,6 +5,7 @@ public class Classes extends Personnage {
 	private String classe;
 	private int numAtk;
 	
+	
 	public Classes () {
 		classe  ="";
 		numAtk =0;
@@ -30,7 +31,5 @@ public class Classes extends Personnage {
 	public void setNumAtk(int numAtk) {
 		this.numAtk = numAtk;
 	}
-	
-	
 
 }

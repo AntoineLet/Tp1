@@ -95,12 +95,12 @@ public class Personnage {
     	Random randAtk = new Random();
     	int atk = randAtk.nextInt(attaqueMax - 1) +1;
     	
-    	
         return atk;
     }
 
     // -------------------------------------------------------------------------
     public void frapperPersonnage(Personnage personnageCible, boolean Tour, Classes classe) {
+    	
     	
     	if (classe.getClasse() == "Mirmillon")
     	{
@@ -134,6 +134,7 @@ public class Personnage {
     			if (oneShot <=10) {
     				System.out.println("Son filet attrape " + personnageCible.getNomPers() + " et il l'empalle sauvagement avec sa lance.\n");
     				personnageCible.setPv(0);
+    				personnageCible.setStatut(false);
     			}	
     			else System.out.println("Le filet n'atteint pas sa cible.\n");
     		

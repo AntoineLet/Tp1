@@ -23,7 +23,7 @@ public class JeuGladiateurs {
         
         Classes classe1 = new Classes("Mirmillon",1);
         Classes classe2 = new Classes ("Rétiaire",1);
-        
+
         personnage1.afficherInfosPersonnage(classe1.getClasse());
         personnage2.afficherInfosPersonnage(classe2.getClasse());//L'initialisation du personnage doit se faire dans le constructeur
         
