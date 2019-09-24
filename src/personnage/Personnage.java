@@ -8,7 +8,6 @@ public class Personnage {
 	private boolean statut;	
 	// -------------------------------------------------------------------------
     public Personnage(String nom, int attaqueMax, int defense, int pvs, int ini) {
-        // TODO : Constructeur AVEC paramÃ¨tres
     	nomPers = nom;
     	this.attaqueMax = attaqueMax;
     	this.defense = defense;
@@ -48,6 +47,14 @@ public class Personnage {
 	public int getIni() {
 		return ini;
 	}
+	public boolean isStatut() {
+		return statut;
+	}
+
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
+
 	public void setIni(int ini) {
 		this.ini = ini;
 	}
@@ -55,7 +62,6 @@ public class Personnage {
 
 	// -------------------------------------------------------------------------
     public Personnage() {
-        // TODO : Constructeur SANS paramÃ¨tres qui initialise Ã  ZÃ‰RO ou Ã  ""
     	nomPers = "";
     	attaqueMax = 0;
     	defense = 0;
@@ -63,20 +69,21 @@ public class Personnage {
     	ini = 0;
     }
 
-    public void afficherInfosPersonnage() {
-        // TODO : Afficher les infos du personnage, tel que montrÃ© dans l'Ã©noncÃ©
+    public void afficherInfosPersonnage(String classe) {
     	System.out.println(nomPers);
     	System.out.println("\t" + "Attaque: " + attaqueMax);
     	System.out.println("\t" + "Defense: " + defense);
     	System.out.println("\t" + "Point de vie: " + pv);
     	System.out.println("\t" + "Initiative: " + ini);
+    	
     	String valStatut;
-    	if (statut = true)
+    	if (statut == true)
     		{ valStatut = "Vivant";}
     	else
-    		{valStatut = "mort";}
+    		{valStatut = "Mort";}
     		
     	System.out.println("\t" + "Statut: " + valStatut );
+    	System.out.println("\t" + "Classe: " + classe);
     	System.out.println("");
     	
 
@@ -84,36 +91,77 @@ public class Personnage {
 
     // -------------------------------------------------------------------------
     private int attaqueCalcul() {
-        // TODO : Retourner la valeur de l'attaque du personnage.
         // Cette valeur est trouvÃ©e alÃ©atoirement et doit se situer entre ZÃ‰RO et valeurMaxAttaque.
-    	Random rand = new Random();
-    	int atk = rand.nextInt(attaqueMax - 1) +1;
+    	Random randAtk = new Random();
+    	int atk = randAtk.nextInt(attaqueMax - 1) +1;
     	
     	
         return atk;
     }
 
     // -------------------------------------------------------------------------
-    public void frapperPersonnage(Personnage personnageCible) {
-
-    	int valAtk = attaqueCalcul();
-    	int Def = personnageCible.getDefense();
-    	System.out.println(this.nomPers + " attaque avec une puissance de: " + valAtk);
-    	System.out.println(personnageCible.getNomPers() + " à une défense de: " + Def);
-    	int dmgSubis = valAtk - Def;
-    	System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
+    public void frapperPersonnage(Personnage personnageCible, boolean Tour, Classes classe) {
     	
-    	if(dmgSubis > 0)
+    	if (classe.getClasse() == "Mirmillon")
     	{
-    		//System.out.println(personnageCible.getPv());
-    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
-    		//System.out.println(personnageCible.getPv());
+    		for(int nmbrAtk = 0; nmbrAtk<2; nmbrAtk++)
+    		{
+    			if(nmbrAtk ==1)
+    				System.out.println(this.nomPers + " attaque de nouveau.\n");
+		    	int valAtk = attaqueCalcul();
+		    	int Def = personnageCible.getDefense();
+		    	System.out.println(this.nomPers + " attaque avec une puissance de: " + valAtk);
+		    	System.out.println(personnageCible.getNomPers() + " à une défense de: " + Def);
+		    	int dmgSubis = valAtk - Def;   
+		    	if(dmgSubis > 0)
+		    	{
+		    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
+		    		
+		    		System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
+		    	}
+		    	else {
+		    		System.out.println(personnageCible.getNomPers() + " ne subit aucun dégat.\n");
+		    		}
+    		}
+    	}
+    	else if(classe.getClasse() == "Rétiaire") {
+    		
+    		if(Tour == false){
+    			System.out.println(nomPers + " lance son filet");
+    			Random Filet = new Random();
+    			int oneShot = Filet.nextInt(100 - 1) +1;
+    			if (oneShot <=10) {
+    				System.out.println("Son filet attrape " + personnageCible.getNomPers() + " et il l'empalle sauvagement avec sa lance.\n");
+    				personnageCible.setPv(0);
+    			}	
+    			else System.out.println("Le filet n'atteint pas sa cible.\n");
+    		
+    		}
+    		else {
+    			System.out.println("Bob le malhanceux rattrape son filet et en profite pour attaquer.\n");
+    			int valAtk = attaqueCalcul();
+    	    	int Def = personnageCible.getDefense();
+    	    	System.out.println(this.nomPers + " attaque avec une puissance de: " + valAtk);
+    	    	System.out.println(personnageCible.getNomPers() + " à une défense de: " + Def);
+    	    	int dmgSubis = valAtk - Def;   
+    	    	if(dmgSubis > 0)
+    	    	{
+    	    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
+    	    		
+    	    		System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
+    	    	}
+    	    	else {
+    	    		System.out.println(personnageCible.getNomPers() + " ne subit aucun dégat.\n");
+    	    		}
+    		}
     	}
     	
     }
 
     // -------------------------------------------------------------------------
     public void setNewIniRandom() {
-        // TODO : Modifier de faÃ§on alÃ©atoire la valeur INI du personnage.
+       
+    	Random randIni = new Random();
+    	ini = randIni.nextInt(100 - 1) + 1;
     }
 }

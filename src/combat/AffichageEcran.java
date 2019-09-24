@@ -8,9 +8,10 @@ public class AffichageEcran {
 	// -------------------------------------------------------------------------
     public void afficherSeparateurDeTour() {
         // TODO : Afficher un retour à la ligne, suivi d'une ligne d'astérisques, tel que montré dans l'énoncé
-    	System.out.println();
-    	for(int i = 0; i<31; i++)
+    	System.out.println("\n\n");
+    	for(int i = 0; i<51; i++)
     	System.out.print("*");
+    	System.out.println("\n\n");
     }
 
     // -------------------------------------------------------------------------
@@ -22,6 +23,8 @@ public class AffichageEcran {
     // -------------------------------------------------------------------------
     public void afficheVictoire(Personnage personnage1, Personnage personnage2) {
         // TODO : Afficher le gagnant du combat, tel que montré dans l'énoncé
+    	
+    	
     }
 
 }
