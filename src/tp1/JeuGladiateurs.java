@@ -48,7 +48,7 @@ public class JeuGladiateurs {
 		    		 
 		    	if(init == personnage1.getIni() && personnage1.getPv() > 0) 
 		    	{
-		    		personnage1.frapperPersonnage(personnage2, typeTour, classe2);  
+		    		personnage1.frapperPersonnage(personnage2, typeTour, classe1);  
 		    		if (personnage2.getPv() <= 0) {
 		    			personnage2.setStatut(false);
 		    			persWin = personnage1.getNomPers();}
@@ -56,7 +56,7 @@ public class JeuGladiateurs {
 			    }
 		    		   
 			    if(init == personnage2.getIni() && personnage2.getPv() > 0) {
-			   		personnage2.frapperPersonnage(personnage1, typeTour, classe1);
+			   		personnage2.frapperPersonnage(personnage1, typeTour, classe2);
 			   		if (personnage1.getPv() <= 0){
 		    			personnage1.setStatut(false);
 		    			persWin = personnage2.getNomPers();}
@@ -70,12 +70,14 @@ public class JeuGladiateurs {
 		    nmbreTour.augmenteTour();
 		    affichage.afficherSeparateurDeTour();
 		    
-		    personnage1.setNewIniRandom();
-		    personnage2.setNewIniRandom();
+		    personnage1.setNewIniRandom(classe1);
+		    personnage2.setNewIniRandom(classe2);
 
 	    }
-	   //affichage.afficherSeparateurDeTour();
-        System.out.println("Fin du combat: " + persWin + " est sorti victorieux");
+	   affichage.afficherSeparateurDeTour();
+       //
+	   //System.out.println("Fin du combat: " + persWin + " est sorti victorieux");
+        affichage.afficheVictoire(personnage1, personnage2, classe1);
        
 	}
 

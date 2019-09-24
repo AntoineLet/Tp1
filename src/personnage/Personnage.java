@@ -106,6 +106,7 @@ public class Personnage {
     	{
     		for(int nmbrAtk = 0; nmbrAtk<2; nmbrAtk++)
     		{
+    			classe.setNumAtk(nmbrAtk);
     			if(nmbrAtk ==1)
     				System.out.println(this.nomPers + " attaque de nouveau.\n");
 		    	int valAtk = attaqueCalcul();
@@ -159,9 +160,17 @@ public class Personnage {
     }
 
     // -------------------------------------------------------------------------
-    public void setNewIniRandom() {
+    public void setNewIniRandom(Classes classe) {
        
+    	if (classe.getClasse() == "Mirmillon") {
     	Random randIni = new Random();
-    	ini = randIni.nextInt(100 - 1) + 1;
+    	ini = randIni.nextInt(30 - 1) + 1;
+    	}
+    	
+    	else if(classe.getClasse() == "Rétiaire") {
+    		Random randIni = new Random();
+        	ini = randIni.nextInt(100 - 1) + 1;
+        	
+    	}
     }
 }
