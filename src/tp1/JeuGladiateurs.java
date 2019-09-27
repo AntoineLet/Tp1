@@ -65,16 +65,19 @@ public class JeuGladiateurs {
 		    	   
 		   	personnage1.afficherInfosPersonnage(classe1.getClasse());
 			personnage2.afficherInfosPersonnage(classe2.getClasse());
-		    System.out.println("Appuyez sur Entrer pour passer au tour suivant.");
-		    scan.nextLine();
-		    nmbreTour.augmenteTour();
-		    affichage.afficherSeparateurDeTour();
 		    
+		    nmbreTour.augmenteTour();
 		    personnage1.setNewIniRandom(classe1);
 		    personnage2.setNewIniRandom(classe2);
-
+		    
+		    affichage.afficherSeparateurDeTour();
+		    if(personnage1.isStatut() == true && personnage2.isStatut() == true) {
+		    	
+		    System.out.println("Appuyez sur Entrer pour passer au tour suivant.");
+		    scan.nextLine();}
+		    
 	    }
-	   affichage.afficherSeparateurDeTour();
+	  
        //
 	   //System.out.println("Fin du combat: " + persWin + " est sorti victorieux");
         affichage.afficheVictoire(personnage1, personnage2, classe1);

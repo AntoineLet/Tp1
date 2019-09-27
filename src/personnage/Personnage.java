@@ -117,6 +117,8 @@ public class Personnage {
 		    	if(dmgSubis > 0)
 		    	{
 		    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
+		    		if(personnageCible.getPv() < 0)
+		    			personnageCible.setPv(0);
 		    		
 		    		System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
 		    	}
@@ -140,7 +142,7 @@ public class Personnage {
     		
     		}
     		else {
-    			System.out.println("Bob le malhanceux rattrape son filet et en profite pour attaquer.\n");
+    			System.out.println(this.nomPers + " rattrape son filet et en profite pour attaquer.\n");
     			int valAtk = attaqueCalcul();
     	    	int Def = personnageCible.getDefense();
     	    	System.out.println(this.nomPers + " attaque avec une puissance de: " + valAtk);
@@ -149,6 +151,8 @@ public class Personnage {
     	    	if(dmgSubis > 0)
     	    	{
     	    		personnageCible.setPv(personnageCible.getPv() - dmgSubis);
+    	    		if(personnageCible.getPv() < 0)
+		    			personnageCible.setPv(0);
     	    		
     	    		System.out.println("Les dommages subis sont donc de: " + dmgSubis + "\n");
     	    	}

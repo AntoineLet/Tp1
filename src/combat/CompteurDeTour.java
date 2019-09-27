@@ -25,7 +25,6 @@ public class CompteurDeTour {
 
     // -------------------------------------------------------------------------
     public void afficheTour() {
-        // TODO : Afficher le tour actuel, tel que montré dans l'énoncé
     	
     	System.out.println("------------");
     	System.out.println("TOUR ACTUEL: " + nmbrTour);
